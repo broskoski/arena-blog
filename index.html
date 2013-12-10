@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Powered by Arena</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/base.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/skeleton.min.css">
+        <script src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+        <script src="http://code.angularjs.org/1.1.5/angular-resource.min.js"></script>
+        <script src="http://code.angularjs.org/1.1.5/angular-sanitize.min.js"></script>
+
+        <style type="text/css" media="screen">
+            body {margin-top:40px;}
+            .header{text-align:center;}
+            .block{border-bottom:1px solid #eee;}
+            .channel{text-align:center; background:#e3e3e3; border:1px solid #ccc;}
+        </style>
+    </head>
+    <body ng-app="arenaApp">
+
+        <section id="page">
+            <div class="nav-menu-bg"></div>
+            <div class="header-wrapper avatar-style-circle">
+
+                <header id="header">
+                    
+                    <div class="header-image-wrapper">
+                        <a href="/" class="header-image parallax cover" data-bg-image="http://static.tumblr.com/ac1b6447566d97c81d3b3f46587d2945/zb2tk1i/8Tnmxki5c/tumblr_static_slide-3.jpg"></a>
+                    </div>
+                    
+
+                    <div class="blog-title content">
+                        <figure class="avatar-wrapper">
+                            <a href="/" style="background-image: url(http://25.media.tumblr.com/avatar_6bd945ced343_128.png)" class="user-avatar"><img src="http://25.media.tumblr.com/avatar_6bd945ced343_128.png" alt="" class="print-only invisible"></a>
+                        </figure>
+                        
+                        <h1><a href="/">Not powered by Are.na</a></h1>
+                        
+                        
+                        <span class="sub-title">
+                            
+                        </span>
+                        
+                    </div>
+                </header>
+            </div>
+
+
+        <div class="container" ng-controller="channelShow">
+
+            <div class="row">
+                <div class="sixteen columns add-bottom">
+                    <h1 class="header">{{channel.title}}</h1>
+                </div>
+
+                <div class="eight columns offset-by-four">
+                    <p ng-if="channel.metadata.description">{{channel.metadata.description}}</p>
+                </div>
+            </div>
+
+            <!-- Channel contents loop -->
+            <div class="row add-bottom block" ng-repeat="block in channel.contents">
+
+                <div class="sixteen columns">
+                    <h4 ng-if="block.title" class="add-bottom">
+                        {{block.title}} 
+                        <span ng-if="block.class == 'Link'">
+                            <a href="{{block.source.url}}" title="{{block.title}}">↳</a>
+                        </span>
+                        <span ng-if="block.class == 'Attachment'">
+                            | <a href="{{block.source.url}}" title="{{block.title}}">Download</a>
+                        </span>
+                    </h4> 
+
+                    <div ng-if="block.class == 'Image'">
+                        <figure>
+                            <div class="seven columns add-bottom">
+                                <img src="{{block.image.display.url}}" alt="{{block.title}}" class="scale-with-grid">
+                            </div>
+                            <div class="seven columns">
+                                <figcaption ng-bind-html-unsafe="block.content_html"> </figcaption>
+                            </div>
+                        </figure>
+                    </div>
+
+                    <div ng-if="block.class == 'Attachment'">
+                        <img src="{{block.image.display.url}}" alt="{{block.title}}" class="scale-with-grid add-bottom">
+                    </div>
+
+                    <div ng-if="block.class == 'Text'" ng-bind-html-unsafe="block.content_html">
+                    </div>
+
+                    <div ng-if="block.class == 'Media'">
+                        <div ng-bind-html-unsafe="block.embed.html"></div>
+                        <figcaption ng-bind-html-unsafe="block.content_html"></figure>
+                    </div>
+
+                    <div ng-if="block.class == 'Channel'">
+                        <h5 class="channel"><a href="#{{block.slug}}" title="">{{block.title}}</a></h5>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Channel contents loop -->
+        </div>
+        <script type="text/javascript">
+            var app = angular.module('arenaApp', ['ngResource', 'ngSanitize']);
+
+            app.controller('channelShow', function($scope, $resource) { 
+              var Channel = $resource('http://api.are.na/v2/channels/:slug');
+
+              var channel = Channel.get({slug: 'arena-influences', sort: 'position', direction: 'asc'}, function(){
+                $scope.channel = channel;
+              });
+            })
+       </script>
+    </body>
+</html>
