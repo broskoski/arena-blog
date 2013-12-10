@@ -1,18 +1,6 @@
 arena-angular-starter
 =====================
 
-![Screenshot](http://f.cl.ly/items/30322r221f431O3z012d/Screen%20Shot%202013-12-09%20at%207.10.58%20PM.png)
+![Screenshot](https://s3.amazonaws.com/arena_images/178291/original_e5bd82d999e96abd4c09e6d7a44cec09)
 
-A very basic Arena API example using Angular.js
-
-**Installation:**
-
-Copy this html file to anywhere on a webserver, and have at it!
-
-**Note:**
-
-If you are developing locally, I use python's SimpleHTTPServer. Navigate to your folder in the terminal and paste:
-
-    python -m SimpleHTTPServer 8080
-    
-Then, visit http://localhost:8080 in your browser.
+"whatever no ones gonna read it" - Damon Zucconi
