@@ -1,0 +1,37 @@
+<section id="page">
+    <div class="nav-menu-bg"></div>
+    <div class="header-wrapper avatar-style-circle">
+
+        <header id="header">
+            
+            <div class="header-image-wrapper">
+                <a href="/" class="header-image parallax cover" data-bg-image="http://static.tumblr.com/ac1b6447566d97c81d3b3f46587d2945/zb2tk1i/8Tnmxki5c/tumblr_static_slide-3.jpg"></a>
+            </div>
+            
+
+            <div class="blog-title content">
+                <figure class="avatar-wrapper">
+                    <a href="/" style="background-image: url(http://25.media.tumblr.com/avatar_6bd945ced343_128.png)" class="user-avatar"><img src="http://25.media.tumblr.com/avatar_6bd945ced343_128.png" alt="" class="print-only invisible"></a>
+                </figure>
+                
+                <h1><a href="/">Powered by Are.na</a></h1>
+                
+                
+                <span class="sub-title">
+                    
+                </span>
+                
+            </div>
+        </header>
+    </div>
+</section>
+
+<section id="posts" class="content clearfix  avatar-style-circle">
+
+    <div ng-repeat="block in channel.contents">
+        <div ng-include src="'/assets/js/templates/block.html'">
+            
+        </div>
+    </div>
+
+</section>

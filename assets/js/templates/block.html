@@ -1,0 +1,52 @@
+<article class="photo not-page">
+    <div class="post-wrapper clearfix">
+        <section class="post">
+            <figcaption class="caption">
+                    
+                
+            <h4 ng-if="block.title" class="add-bottom">
+                {{block.title}} 
+                <span ng-if="block.class == 'Link'">
+                    <a href="{{block.source.url}}" title="{{block.title}}">↳</a>
+                </span>
+                <span ng-if="block.class == 'Attachment'">
+                    | <a href="{{block.source.url}}" title="{{block.title}}">Download</a>
+                </span>
+            </h4> 
+
+            <div ng-if="block.class == 'Image'">
+                <figure>
+                    <div class="seven columns add-bottom">
+                        <img src="{{block.image.display.url}}" alt="{{block.title}}" class="scale-with-grid">
+                    </div>
+                    <div class="seven columns">
+                        <figcaption ng-bind-html-unsafe="block.content_html"> </figcaption>
+                    </div>
+                </figure>
+            </div>
+
+            <div ng-if="block.class == 'Attachment'">
+                <img src="{{block.image.display.url}}" alt="{{block.title}}" class="scale-with-grid add-bottom">
+            </div>
+
+            <div ng-if="block.class == 'Text'" ng-bind-html-unsafe="block.content_html">
+            </div>
+
+            <div ng-if="block.class == 'Media'">
+                <div ng-bind-html-unsafe="block.embed.html"></div>
+                <figcaption ng-bind-html-unsafe="block.content_html"></figure>
+            </div>
+
+            <div ng-if="block.class == 'Channel'">
+                <div ng-repeat="asset in block.contents | reverse" ng-include src="'assets/js/templates/asset.html'">
+                    
+                </div>
+                <div ng-if="block.length > 6">
+                    <a href="#{{block.slug}}" title="">Read more...</a>
+                </div>
+            </div>
+            </figcaption>
+            
+        </section>
+    </div>
+</article>

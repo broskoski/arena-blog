@@ -613,13 +613,13 @@ h1 + .sub-title {
 /** Avatar **/
 .avatar-wrapper {
     left: 50%;
-    margin-left: -54px;
+    margin-left: -70px;
     position: absolute;
-    top: -70px;
+    top: -133px;
 }
 
 .user-avatar {
-    background: #666 50% 50% no-repeat;
+    background: #fff 50% 50% no-repeat;
     background-size: 100px 100px;
     border-radius: 4px;
     display: block;
@@ -653,7 +653,7 @@ h1 + .sub-title {
 }
 
 .avatar-style-circle .avatar-wrapper {
-    top: -55px;
+    top: -133px;
 }
 
 .avatar-style-hidden .avatar-wrapper {
@@ -662,6 +662,7 @@ h1 + .sub-title {
 
 .avatar-style-circle .user-avatar {
     border-radius: 50%;
+    padding: 20px;
 }
 
 #header.no-image .avatar-wrapper {
@@ -790,7 +791,6 @@ h1 + .sub-title {
 
 .post {
     padding: 20px;
-    margin-bottom: -50px;
     position: relative;
     word-wrap: break-word;
     -webkit-transition: margin-bottom 0.2s ease;
